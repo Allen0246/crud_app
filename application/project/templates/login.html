@@ -1,0 +1,21 @@
+{% from "macros/flashed_messages.html" import flashed_messages with context %}
+{% from "macros/render_field.html" import render_field with context %}
+{% extends "layout.html" %}
+
+{% block main %}
+<body>
+    <div class="d-flex justify-content-center">
+        <form method="POST" action="/login">
+            
+            <div class="h1">Bejelentkezés </div>
+            
+            <div class="mb-2">{{ render_field(form.username)}}</div>
+            <div class="mb-2">{{ render_field(form.password)}}</div>
+
+            <button type="submit" class="btn btn-primary">Belépés</button>
+            <a class="btn btn-secondary" href="/register"> Regisztációhoz kattintson ide</a>
+            
+        </form>
+    </div>
+</body>
+{% endblock %}

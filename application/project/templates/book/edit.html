@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% from "macros/render_field.html" import render_field with context %}
+
+{% block main %}
+
+<h1 class="h3 mb-2 text-gray-800">Könyv szerkesztése</h1>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <form method="POST" action="" role="form">
+      {{ form.csrf_token }}
+
+      {{ form.book_id(value=book.id) }}
+
+
+
+      {{ render_field(form.szerzo) }}
+      <br class="m-2">
+      {{ render_field(form.cim) }}
+      <br class="m-2">
+
+      <button type="submit" class="btn btn-primary">Mentés</button>
+      <a class="btn btn-secondary" href="/book">Vissza</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

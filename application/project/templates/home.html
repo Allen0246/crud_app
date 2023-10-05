@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+{% if current_user.is_authenticated %}
+<div class="text-center">
+    <p class="lead text-gray-800 mb-2">Üdvözöllek az oldalon <b>{{ current_user.username }}</b>! </p>
+</div>
+{% else %}
+<div class="text-center">
+    <p class="lead text-gray-800 mb-2">Nincs bejelentkezve ! </p>
+</div>
+{% endif %}
+   
+
+{% endblock %}

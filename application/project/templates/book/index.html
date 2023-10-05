@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block main %}
+
+<h1 class="h3 mb-2 text-gray-800">Könyvek</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="btn-group mr-2">
+      <a href="/book/add" class="button btn btn btn-primary">Új könyv hozzáadása</a>
+    </div>
+    <!-- <div class="btn-group mr-2">
+      <a href="/user/export" class="button btn btn-sm btn-primary">Felhasználók exportálása</a>
+    </div> -->
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Azonosító</th>
+            <th>Szerző</th>
+            <th>Cím</th>
+            <th class="no-sort">Elérhető műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+          <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.szerzo }}</td>
+            <td>{{ book.cim }}</td>
+            <td>
+              <a href="/book/edit/{{ book.id }}" class="button btn btn btn-primary">Felhasználó szerkeztése</a>
+              <a href="/book/delete/{{ book.id }}" class="button btn btn btn-danger">Felhasználó törlése</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

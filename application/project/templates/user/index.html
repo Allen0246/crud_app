@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block main %}
+
+<h1 class="h3 mb-2 text-gray-800">Felhasználók</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="btn-group mr-2">
+      <a href="/user/add" class="button btn btn btn-primary">Új felhasználó létrehozása</a>
+    </div>
+    <!-- <div class="btn-group mr-2">
+      <a href="/user/export" class="button btn btn-sm btn-primary">Felhasználók exportálása</a>
+    </div> -->
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Azonosító</th>
+            <th>Felhasználónév</th>
+            <th class="no-sort">Elérhető műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username|uppercase }}</td>
+            <td>
+              
+              {% if current_user.id != user.id %}
+              <a href="/user/edit/{{ user.id }}" class="button btn btn btn-primary">Felhasználó szerkeztése</a>
+              <a href="/user/delete/{{ user.id }}" class="button btn btn btn-danger">Felhasználó törlése</a>
+              {% else %}
+              <a href="/user/edit/{{ user.id }}" class="button btn btn btn-primary">Felhasználó szerkeztése</a>
+              {% endif%}
+
+              
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

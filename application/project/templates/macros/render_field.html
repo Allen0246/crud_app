@@ -1,0 +1,11 @@
+{% macro render_field(field) %}
+{% set placeholder = kwargs.pop('placeholder', '') %}
+{#{% set placeholder = field.label.text %}#}
+    {{field.label}}
+    {{ field(placeholder=placeholder) }}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+        {% endif %}
+{% endmacro %}
